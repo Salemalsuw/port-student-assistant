@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منصة مسابقة الموانئ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <h1>منصة مسابقة الموانئ</h1>
+      <p>اختبر معلوماتك في مجال الموانئ والخدمات اللوجستية</p>
+    </header>
+
+    <main class="card" id="start-screen">
+      <h2>ابدأ المسابقة</h2>
+      <label for="studentName">اسم الطالب</label>
+      <input type="text" id="studentName" placeholder="اكتب اسمك هنا" />
+
+      <label for="studentSchool">المدرسة / الجهة</label>
+      <input type="text" id="studentSchool" placeholder="مثال: ثانوية الملك فهد" />
+
+      <button id="startBtn">ابدأ الآن</button>
+    </main>
+
+    <section class="card hidden" id="quiz-screen">
+      <div class="quiz-top">
+        <div>
+          <strong>الطالب:</strong>
+          <span id="displayName">-</span>
+        </div>
+        <div>
+          <strong>السؤال:</strong>
+          <span id="questionCounter">1 / 5</span>
+        </div>
+      </div>
+
+      <h2 id="questionText"></h2>
+      <div id="answersContainer" class="answers"></div>
+
+      <div class="quiz-actions">
+        <button id="nextBtn" disabled>التالي</button>
+      </div>
+    </section>
+
+    <section class="card hidden" id="result-screen">
+      <h2>النتيجة النهائية</h2>
+      <p><strong>اسم الطالب:</strong> <span id="resultName"></span></p>
+      <p><strong>الجهة:</strong> <span id="resultSchool"></span></p>
+      <p><strong>الدرجة:</strong> <span id="resultScore"></span></p>
+      <p><strong>الحالة:</strong> <span id="resultStatus"></span></p>
+
+      <div class="result-actions">
+        <button id="restartBtn">إعادة المحاولة</button>
+        <button id="certificateBtn" class="hidden">عرض الشهادة</button>
+      </div>
+    </section>
+
+    <section class="certificate hidden" id="certificate">
+      <div class="certificate-inner">
+        <h2>شهادة اجتياز</h2>
+        <p>تشهد منصة مسابقة الموانئ بأن الطالب / الطالبة</p>
+        <h3 id="certificateName">اسم الطالب</h3>
+        <p>من جهة: <span id="certificateSchool"></span></p>
+        <p>قد اجتاز/اجتازت مسابقة الموانئ بنجاح</p>
+        <p>بنسبة: <strong id="certificateScore"></strong></p>
+        <p>بتاريخ: <span id="certificateDate"></span></p>
+        <p>رقم الشهادة: <span id="certificateId"></span></p>
+
+        <div class="certificate-sign">
+          <div>
+            <span>منصة مسابقة الموانئ</span>
+            <hr />
+            <small>الجهة المنظمة</small>
+          </div>
+        </div>
+
+        <button onclick="window.print()">طباعة الشهادة</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
