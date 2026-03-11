@@ -1,210 +1,302 @@
 const questions = [
   {
-    question: "ما المقصود بوحدة FEU في مجال الحاويات؟",
+    question: "أي العبارات الآتية تعبّر بدقة أكبر عن مفهوم النقل البحري؟",
     answers: [
-      "حاوية بطول 20 قدمًا",
-      "حاوية بطول 40 قدمًا",
-      "حاوية بطول 10 أقدام",
-      "حاوية مبردة فقط"
+      "نقل البضائع داخل حدود الدولة باستخدام السفن الصغيرة فقط",
+      "تسخير السفن كوسيلة أساسية لنقل البضائع والمواد المتنوعة والركاب عبر البحار والمحيطات بين الدول أو ضمن النطاق البحري الإقليمي",
+      "نقل الحاويات بين الموانئ فقط دون الركاب أو المواد الخام",
+      "استخدام الموانئ لتخزين البضائع قبل توزيعها برياً دون وجود رحلة بحرية"
     ],
     correct: 1
   },
   {
-    question: "ما الاسم المختصر لوحدة الحاوية القياسية بطول 20 قدمًا؟",
-    answers: ["FEU", "TPA", "TEU", "ETA"],
+    question: "ما الوصف الأدق للسفن التجارية؟",
+    answers: [
+      "هي كل سفينة تعمل في البحر بما في ذلك القاطرات والسفن الحربية",
+      "هي السفن التي تُستخدم حصراً لنقل الحاويات بين الموانئ الدولية",
+      "هي السفن المخصصة لنقل البضائع أو الركاب لغرض تحقيق الربح المادي والاقتصادي",
+      "هي السفن السياحية التي تقدم خدمات ترفيهية للمسافرين فقط"
+    ],
     correct: 2
   },
   {
-    question: "أي من التالي يعد من الخدمات الأساسية في الموانئ؟",
+    question: "أي خيار يعبّر بشكل أصح عن وظيفة الميناء البحري؟",
     answers: [
-      "مناولة الحاويات",
-      "إنتاج النفط",
-      "صناعة الطائرات",
-      "استخراج المعادن"
-    ],
-    correct: 0
-  },
-  {
-    question: "ما فائدة الميناء في سلاسل الإمداد؟",
-    answers: [
-      "تأخير الشحنات",
-      "ربط النقل البحري بالبري واللوجستي",
-      "استبدال المطارات بالكامل",
-      "منع حركة البضائع"
+      "منطقة رسو للسفن فقط دون ارتباط بوسائل النقل الأخرى",
+      "منشأة ساحلية تستقبل السفن وتنفذ الشحن والتفريغ وتربط النقل البحري بوسائل النقل الأخرى",
+      "منطقة صناعية داخلية مخصصة لتخزين الوقود البحري فقط",
+      "ساحة مفتوحة تُستخدم لتكديس الحاويات الفارغة دون خدمات ملاحية"
     ],
     correct: 1
   },
   {
-    question: "ماذا تعني كلمة Logistics؟",
+    question: "أي عبارة تميّز FCL عن LCL بشكل أدق؟",
     answers: [
-      "الخدمات اللوجستية",
-      "الأرصاد الجوية",
-      "التعليم البحري",
-      "التصدير فقط"
+      "FCL يعني أن الحاوية مشتركة بين عدة عملاء، وLCL يعني أن الحاوية لعميل واحد",
+      "FCL شحنة حاوية كاملة تخص عميلاً واحداً، بينما LCL شحنة مجمعة داخل الحاوية لأكثر من عميل",
+      "FCL يستخدم للنقل الجوي، وLCL يستخدم للنقل البحري فقط",
+      "FCL خاص بالحاويات المبردة، وLCL خاص بالحاويات الجافة"
+    ],
+    correct: 1
+  },
+  {
+    question: "عندما يقال إن سعة سفينة حاويات تبلغ 10,000 TEU، فالمقصود الأقرب هو:",
+    answers: [
+      "أن السفينة تحمل 10,000 حاوية من مقاس 40 قدم فقط",
+      "أن السفينة تحمل 5,000 حاوية من مقاس 20 قدم فقط لا غير",
+      "أن السعة التشغيلية تُقاس بوحدة مكافئة لحاوية 20 قدم ويمكن التعبير بها عن مزيج من حاويات 20 و40 قدم",
+      "أن السفينة مخصصة حصراً لنقل 10,000 طن من البضائع العامة"
+    ],
+    correct: 2
+  },
+  {
+    question: "أي زوج من المكونات التالية يُعد من مكونات الميناء البحري؟",
+    answers: [
+      "قناة الاقتراب وكاسرات الأمواج",
+      "المدرجات الجوية وصالات السفر",
+      "الأنفاق البرية ومحطات المترو",
+      "أبراج الاتصالات ومحطات توليد الكهرباء فقط"
     ],
     correct: 0
+  },
+  {
+    question: "أي المعدات التالية يرتبط دوره بشكل رئيسي بساحة تخزين الحاويات وتنظيمها؟",
+    answers: [
+      "رافعة الرصيف Quay Crane",
+      "الرافعات الجسرية المطاطية RTG",
+      "قوارب الإرشاد البحري",
+      "العبارات البحرية"
+    ],
+    correct: 1
+  },
+  {
+    question: "ما المقصود بختم الحاوية Seal بأدق صورة؟",
+    answers: [
+      "وسيلة لتحديد وزن الحاوية الفارغة قبل الشحن",
+      "علامة توضع على الحاوية لتحديد نوع البضاعة الخطرة فقط",
+      "قطعة أمان توضع بعد إغلاق الحاوية لإثبات عدم فتحها أو العبث بها حتى الوصول",
+      "رمز خاص يحدد شركة تصنيع الحاوية وفق معيار ISO"
+    ],
+    correct: 2
+  },
+  {
+    question: "أي عبارة أدق بخصوص الحاويات ذات الارتفاع العالي High Cube؟",
+    answers: [
+      "هي حاويات مبردة فقط ولا تتوافر منها مقاسات قياسية",
+      "هي حاويات قياسية تتميز بارتفاع أكبر من المعتاد لتوفير مساحة رأسية أكبر",
+      "هي حاويات مخصصة حصراً لنقل السوائل الكيميائية",
+      "هي حاويات لا يمكن نقلها إلا بالشاحنات دون السفن"
+    ],
+    correct: 1
+  },
+  {
+    question: "أي قاعدة سلامة مما يلي تُعد من قواعد السلامة في الميناء؟",
+    answers: [
+      "السماح بالوقوف قرب الأحمال المعلقة عند الحاجة التشغيلية",
+      "تشغيل المعدات أولاً ثم طلب التصريح لاحقاً عند الضرورة",
+      "الالتزام بمسارات المشاة وعدم العمل دون معدات الحماية الشخصية",
+      "تقليل استخدام ملابس الرؤية العالية داخل ساحات الميناء"
+    ],
+    correct: 2
+  },
+  {
+    question: "ما المقصود بمصطلح Draft في السفن؟",
+    answers: [
+      "عرض السفينة الكلي",
+      "المسافة بين قاع السفينة وسطح الماء",
+      "طول السفينة من المقدمة إلى المؤخرة",
+      "وزن البضائع داخل السفينة"
+    ],
+    correct: 1
+  },
+  {
+    question: "ما المقصود بمصطلح LOA في السفن؟",
+    answers: [
+      "الطول الكلي للسفينة",
+      "عرض السفينة",
+      "ارتفاع السفينة فوق الماء",
+      "عدد الحاويات التي تحملها السفينة"
+    ],
+    correct: 0
+  },
+  {
+    question: "أي المصطلحات التالية يستخدم للتعبير عن وزن الحمولة التي تستطيع السفينة حملها؟",
+    answers: [
+      "Draft",
+      "Beam",
+      "Deadweight Tonnage (DWT)",
+      "LOA"
+    ],
+    correct: 2
+  },
+  {
+    question: "ما المصطلح الذي يعبّر عن عرض السفينة؟",
+    answers: [
+      "Beam",
+      "Draft",
+      "Cargo",
+      "Berth"
+    ],
+    correct: 0
+  },
+  {
+    question: "ما المقصود بمصطلح Berth في الميناء؟",
+    answers: [
+      "مكان رسو السفينة في الميناء",
+      "مخزن البضائع في الميناء",
+      "قناة الدخول للميناء",
+      "مكتب إدارة الميناء"
+    ],
+    correct: 0
+  },
+  {
+    question: "ما المقصود بـ Manifest في الشحن البحري؟",
+    answers: [
+      "بيان يوضح تفاصيل البضائع الموجودة على السفينة أو الشحنة",
+      "نوع من أنواع السفن التجارية",
+      "اسم خاص بمخزن البضائع في الميناء",
+      "رخصة تشغيل تصدر للطاقم البحري"
+    ],
+    correct: 0
+  },
+  {
+    question: "أي تعريف أدق لـ Bill of Lading؟",
+    answers: [
+      "وثيقة تأمين على السفينة ضد الحوادث البحرية",
+      "مستند يثبت استلام الناقل للبضاعة ويحدد شروط نقلها",
+      "سجل صيانة خاص بالمعدات المينائية",
+      "ترخيص رسو مؤقت داخل الميناء"
+    ],
+    correct: 1
+  },
+  {
+    question: "ما المقصود بـ DWT للسفينة؟",
+    answers: [
+      "وزن السفينة الفارغة فقط",
+      "العرض الكلي للسفينة",
+      "الوزن الإجمالي الذي تستطيع السفينة حمله من بضائع ووقود ومياه ومؤن وطاقم",
+      "سرعة السفينة في البحر المفتوح"
+    ],
+    correct: 2
+  },
+  {
+    question: "ما الاستخدام الرئيسي للحاوية المبردة Reefer Container؟",
+    answers: [
+      "نقل السلع التي تحتاج درجة حرارة محددة أثناء النقل",
+      "نقل المعدات الثقيلة ذات الأحجام الكبيرة جداً فقط",
+      "تخزين الوقود البحري داخل الميناء",
+      "مناولة البضائع السائبة الجافة حصراً"
+    ],
+    correct: 0
+  },
+  {
+    question: "أي عبارة أدق بخصوص Quay Crane؟",
+    answers: [
+      "رافعة تعمل في ساحات التخزين فقط ولا تصل إلى السفينة",
+      "رافعة كبيرة مثبتة على الرصيف لتحميل وتنزيل الحاويات من السفن",
+      "مركبة برية لنقل الحاويات بين البوابات الخارجية والمستودعات",
+      "نظام إلكتروني لتتبع مواقع الحاويات"
+    ],
+    correct: 1
+  },
+  {
+    question: "ما الوظيفة الرئيسية لرافعات RTG؟",
+    answers: [
+      "إرشاد السفن داخل قناة الاقتراب",
+      "تزويد الحاويات المبردة بالطاقة الكهربائية",
+      "تكديس الحاويات وتنظيمها داخل الساحات",
+      "فحص المستندات الجمركية عند بوابة الميناء"
+    ],
+    correct: 2
+  },
+  {
+    question: "أي عبارة تصف الميناء الجاف بشكل صحيح؟",
+    answers: [
+      "ميناء يقع داخل اليابسة ويرتبط بالموانئ البحرية بوسائل النقل البري أو السككي",
+      "ميناء مخصص حصراً للمواد النفطية ومشتقاتها",
+      "منطقة رسو خارج حدود الميناء تستخدم للانتظار فقط",
+      "جزء من البحر يستخدم لتخفيف ازدحام السفن"
+    ],
+    correct: 0
+  },
+  {
+    question: "ما الغرض الأساسي من كاسرات الأمواج في الميناء؟",
+    answers: [
+      "زيادة سرعة دخول السفن إلى الأرصفة",
+      "حماية الميناء وتوفير بيئة أكثر أماناً لرسو السفن",
+      "تخزين البضائع الخطرة بعيداً عن الساحات",
+      "ربط الميناء بشبكات النقل البري"
+    ],
+    correct: 1
+  },
+  {
+    question: "ما المقصود بـ Approach Channel؟",
+    answers: [
+      "ممر مائي مصمم لتمكين السفن من الدخول والخروج من الميناء بأمان",
+      "رصيف مخصص لتحميل الحاويات الفارغة فقط",
+      "منطقة لتجميع الشاحنات قبل الدخول إلى الميناء",
+      "مخزن بحري للبضائع القابلة للتلف"
+    ],
+    correct: 0
+  },
+  {
+    question: "أي تعريف أدق لمنطقة الرسو Anchoring Area؟",
+    answers: [
+      "منطقة بحرية خارج حدود الميناء تنتظر فيها السفن قبل السماح لها بالدخول",
+      "ساحة داخلية لتخزين الحاويات الواردة والمغادرة",
+      "رصيف متخصص لسفن الدحرجة فقط",
+      "منطقة مخصصة لأعمال الصيانة الجافة للسفن"
+    ],
+    correct: 0
+  },
+  {
+    question: "أي عبارة أدق عن سفن الدحرجة Ro-Ro؟",
+    answers: [
+      "سفن متخصصة لنقل الحاويات المبردة فقط",
+      "سفن تنقل المركبات والشاحنات عبر منحدرات تسمح بالدخول والخروج بسهولة",
+      "سفن مخصصة للمواد السائبة الجافة مثل الفحم والحبوب",
+      "سفن صغيرة للإرشاد البحري داخل الموانئ"
+    ],
+    correct: 1
+  },
+  {
+    question: "ما المقصود بالبضائع السائبة Bulk Cargo؟",
+    answers: [
+      "بضائع تُنقل داخل حاويات قياسية مغلقة فقط",
+      "بضائع تُشحن دون تغليف منفصل لكل وحدة مثل الحبوب والفحم",
+      "بضائع مخصصة للنقل الجوي السريع فقط",
+      "بضائع ذات قيمة مرتفعة لا تُنقل إلا في مستودعات مبردة"
+    ],
+    correct: 1
+  },
+  {
+    question: "أي خيار يعبّر بشكل أصح عن أهمية Seal؟",
+    answers: [
+      "يحدد نوع الحاوية وأبعادها الفنية",
+      "يستخدم كبديل عن بوليصة الشحن في التصدير",
+      "يُظهر أن الحاوية لم تُفتح أو يُعبث بها حتى الوصول",
+      "يحدد الوزن الأقصى المسموح به للحاوية"
+    ],
+    correct: 2
+  },
+  {
+    question: "أي مما يلي يُعد من معدات الوقاية الشخصية الأساسية في الميناء؟",
+    answers: [
+      "الخوذة وأحذية السلامة وملابس الرؤية العالية",
+      "قوارب النجاة وكاسرات الأمواج",
+      "الرافعات الجسرية والشاحنات الطرفية",
+      "السلالم المتحركة وأنظمة الإضاءة العامة"
+    ],
+    correct: 0
+  },
+  {
+    question: "أي عبارة أدق بخصوص دور الموانئ في سلاسل الإمداد؟",
+    answers: [
+      "الموانئ مجرد مناطق تخزين ولا علاقة لها بتدفق التجارة",
+      "الموانئ تربط البحر باليابسة وتؤثر مباشرة في كفاءة سلاسل الإمداد",
+      "الموانئ تستخدم فقط لخدمة السفن السياحية والركاب",
+      "الموانئ لا تتأثر بحركة الشاحنات أو وسائل النقل البرية"
+    ],
+    correct: 1
   }
 ];
-
-const passPercentage = 60;
-
-const startScreen = document.getElementById("start-screen");
-const quizScreen = document.getElementById("quiz-screen");
-const resultScreen = document.getElementById("result-screen");
-const certificateSection = document.getElementById("certificate");
-
-const studentNameInput = document.getElementById("studentName");
-const studentSchoolInput = document.getElementById("studentSchool");
-
-const startBtn = document.getElementById("startBtn");
-const nextBtn = document.getElementById("nextBtn");
-const restartBtn = document.getElementById("restartBtn");
-const certificateBtn = document.getElementById("certificateBtn");
-
-const displayName = document.getElementById("displayName");
-const questionCounter = document.getElementById("questionCounter");
-const questionText = document.getElementById("questionText");
-const answersContainer = document.getElementById("answersContainer");
-
-const resultName = document.getElementById("resultName");
-const resultSchool = document.getElementById("resultSchool");
-const resultScore = document.getElementById("resultScore");
-const resultStatus = document.getElementById("resultStatus");
-
-const certificateName = document.getElementById("certificateName");
-const certificateSchool = document.getElementById("certificateSchool");
-const certificateScore = document.getElementById("certificateScore");
-const certificateDate = document.getElementById("certificateDate");
-const certificateId = document.getElementById("certificateId");
-
-let currentQuestion = 0;
-let score = 0;
-let selectedAnswer = null;
-let studentData = {
-  name: "",
-  school: ""
-};
-
-startBtn.addEventListener("click", startQuiz);
-nextBtn.addEventListener("click", goToNextQuestion);
-restartBtn.addEventListener("click", restartQuiz);
-certificateBtn.addEventListener("click", showCertificate);
-
-function startQuiz() {
-  const name = studentNameInput.value.trim();
-  const school = studentSchoolInput.value.trim();
-
-  if (!name || !school) {
-    alert("فضلاً اكتب اسم الطالب والجهة.");
-    return;
-  }
-
-  studentData.name = name;
-  studentData.school = school;
-
-  currentQuestion = 0;
-  score = 0;
-  selectedAnswer = null;
-
-  displayName.textContent = studentData.name;
-
-  startScreen.classList.add("hidden");
-  resultScreen.classList.add("hidden");
-  certificateSection.classList.add("hidden");
-  quizScreen.classList.remove("hidden");
-
-  renderQuestion();
-}
-
-function renderQuestion() {
-  const q = questions[currentQuestion];
-  questionCounter.textContent = `${currentQuestion + 1} / ${questions.length}`;
-  questionText.textContent = q.question;
-  answersContainer.innerHTML = "";
-  selectedAnswer = null;
-  nextBtn.disabled = true;
-
-  q.answers.forEach((answer, index) => {
-    const btn = document.createElement("button");
-    btn.className = "answer-btn";
-    btn.textContent = answer;
-    btn.addEventListener("click", () => selectAnswer(index, btn));
-    answersContainer.appendChild(btn);
-  });
-}
-
-function selectAnswer(index, buttonElement) {
-  selectedAnswer = index;
-  nextBtn.disabled = false;
-
-  document.querySelectorAll(".answer-btn").forEach((btn) => {
-    btn.classList.remove("selected");
-  });
-
-  buttonElement.classList.add("selected");
-}
-
-function goToNextQuestion() {
-  if (selectedAnswer === null) return;
-
-  if (selectedAnswer === questions[currentQuestion].correct) {
-    score++;
-  }
-
-  currentQuestion++;
-
-  if (currentQuestion < questions.length) {
-    renderQuestion();
-  } else {
-    showResults();
-  }
-}
-
-function showResults() {
-  quizScreen.classList.add("hidden");
-  resultScreen.classList.remove("hidden");
-
-  const percentage = Math.round((score / questions.length) * 100);
-  const passed = percentage >= passPercentage;
-
-  resultName.textContent = studentData.name;
-  resultSchool.textContent = studentData.school;
-  resultScore.textContent = `${score} من ${questions.length} (${percentage}%)`;
-  resultStatus.textContent = passed ? "ناجح" : "لم يجتز";
-  resultStatus.style.color = passed ? "green" : "crimson";
-
-  if (passed) {
-    certificateBtn.classList.remove("hidden");
-  } else {
-    certificateBtn.classList.add("hidden");
-  }
-}
-
-function showCertificate() {
-  const percentage = Math.round((score / questions.length) * 100);
-
-  certificateName.textContent = studentData.name;
-  certificateSchool.textContent = studentData.school;
-  certificateScore.textContent = `${percentage}%`;
-  certificateDate.textContent = new Date().toLocaleDateString("ar-SA");
-  certificateId.textContent = generateCertificateId(studentData.name);
-
-  resultScreen.classList.add("hidden");
-  certificateSection.classList.remove("hidden");
-}
-
-function generateCertificateId(name) {
-  const cleanName = name.replace(/\s+/g, "").slice(0, 4).toUpperCase();
-  const randomPart = Math.floor(100000 + Math.random() * 900000);
-  return `PORT-${cleanName}-${randomPart}`;
-}
-
-function restartQuiz() {
-  studentNameInput.value = "";
-  studentSchoolInput.value = "";
-
-  resultScreen.classList.add("hidden");
-  quizScreen.classList.add("hidden");
-  certificateSection.classList.add("hidden");
-  startScreen.classList.remove("hidden");
-}
