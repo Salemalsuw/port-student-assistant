@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const QUESTION_BANK = [
   {
@@ -338,12 +338,22 @@ const QUESTION_BANK = [
   },
   {
     question: "ما وظيفة الساحات التخزينية Storage Yards؟",
-    options: ["إصلاح السفن", "تخزين الحاويات قبل الشحن أو بعد التفريغ", "نقل الركاب", "تعبئة الوقود"],
+    options: [
+      "إصلاح السفن",
+      "تخزين الحاويات قبل الشحن أو بعد التفريغ",
+      "نقل الركاب",
+      "تعبئة الوقود"
+    ],
     answer: 1
   },
   {
     question: "ما وظيفة المستودعات داخل الميناء؟",
-    options: ["تخزين البضائع التي تحتاج حماية وفرز", "رسو السفن", "إدارة الأمواج", "تحريك الرافعات"],
+    options: [
+      "تخزين البضائع التي تحتاج حماية وفرز",
+      "رسو السفن",
+      "إدارة الأمواج",
+      "تحريك الرافعات"
+    ],
     answer: 0
   },
   {
@@ -1128,7 +1138,7 @@ const QUESTION_BANK = [
   }
 ];
 
-const QUIZ_LENGTH = 30; // غيّرها إلى 150 إذا تبي كل الأسئلة تظهر في محاولة واحدة
+const QUIZ_LENGTH = 30;
 const PASS_PERCENTAGE = 60;
 
 function shuffleArray(array) {
@@ -1154,17 +1164,27 @@ export default function PortStudentAssistantApp() {
   const [showCertificate, setShowCertificate] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [score, setScore] = useState(0);
+  const [certificateId, setCertificateId] = useState("");
 
   const totalQuestions = questions.length;
+
   const percentage = useMemo(() => {
     if (!totalQuestions) return 0;
     return Math.round((score / totalQuestions) * 100);
   }, [score, totalQuestions]);
 
   const passed = percentage >= PASS_PERCENTAGE;
-  const certificateId = useMemo(() => generateCertificateId(studentName), [studentName]);
+  const current = questions[currentQuestion];
+  const selectedAnswer = selectedAnswers[currentQuestion] ?? null;
+  const progress = totalQuestions ? Math.round(((currentQuestion + 1) / totalQuestions) * 100) : 0;
+
+  useEffect(() => {
+    if (passed && finished && !certificateId) {
+      setCertificateId(generateCertificateId(studentName));
+    }
+  }, [passed, finished, certificateId, studentName]);
 
   const startQuiz = () => {
     if (!studentName.trim() || !studentSchool.trim()) {
@@ -1176,28 +1196,48 @@ export default function PortStudentAssistantApp() {
     const selected = shuffled.slice(0, Math.min(QUIZ_LENGTH, QUESTION_BANK.length));
 
     setQuestions(selected);
+    setSelectedAnswers(new Array(selected.length).fill(null));
     setCurrentQuestion(0);
-    setSelectedAnswer(null);
     setScore(0);
     setStarted(true);
     setFinished(false);
     setShowCertificate(false);
+    setCertificateId("");
+  };
+
+  const chooseAnswer = (index) => {
+    setSelectedAnswers((prev) => {
+      const updated = [...prev];
+      updated[currentQuestion] = index;
+      return updated;
+    });
+  };
+
+  const goToPreviousQuestion = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion((prev) => prev - 1);
+    }
+  };
+
+  const finishQuiz = () => {
+    const finalScore = questions.reduce((total, question, index) => {
+      return total + (selectedAnswers[index] === question.answer ? 1 : 0);
+    }, 0);
+
+    setScore(finalScore);
+    setStarted(false);
+    setFinished(true);
   };
 
   const nextQuestion = () => {
     if (selectedAnswer === null) return;
 
-    if (selectedAnswer === questions[currentQuestion].answer) {
-      setScore((prev) => prev + 1);
-    }
-
     const next = currentQuestion + 1;
+
     if (next < questions.length) {
       setCurrentQuestion(next);
-      setSelectedAnswer(null);
     } else {
-      setStarted(false);
-      setFinished(true);
+      finishQuiz();
     }
   };
 
@@ -1206,35 +1246,44 @@ export default function PortStudentAssistantApp() {
     setStudentSchool("");
     setQuestions([]);
     setCurrentQuestion(0);
-    setSelectedAnswer(null);
+    setSelectedAnswers([]);
     setScore(0);
     setStarted(false);
     setFinished(false);
     setShowCertificate(false);
+    setCertificateId("");
   };
-
-  const current = questions[currentQuestion];
 
   if (showCertificate) {
     return (
-      <div className="min-h-screen bg-slate-100 p-6">
+      <div dir="rtl" className="min-h-screen bg-slate-100 p-6">
         <div className="mx-auto max-w-4xl rounded-3xl border-4 border-amber-400 bg-amber-50 p-8 text-center shadow-xl">
           <h1 className="mb-4 text-4xl font-bold text-amber-700">شهادة اجتياز</h1>
-          <p className="mb-3 text-lg text-slate-700">تشهد منصة مسابقة الموانئ بأن الطالب / الطالبة</p>
+
+          <p className="mb-3 text-lg text-slate-700">
+            تشهد منصة مسابقة الموانئ بأن الطالب / الطالبة
+          </p>
+
           <h2 className="mb-4 text-3xl font-bold text-sky-800">{studentName}</h2>
+
           <p className="mb-2 text-lg">
             من جهة: <span className="font-bold">{studentSchool}</span>
           </p>
+
           <p className="mb-2 text-lg">قد اجتاز / اجتازت مسابقة الموانئ بنجاح</p>
+
           <p className="mb-2 text-lg">
             الدرجة: <span className="font-bold">{score} / {totalQuestions}</span>
           </p>
+
           <p className="mb-2 text-lg">
             النسبة: <span className="font-bold">{percentage}%</span>
           </p>
+
           <p className="mb-2 text-lg">
             رقم الشهادة: <span className="font-bold">{certificateId}</span>
           </p>
+
           <p className="mb-6 text-lg">
             التاريخ: <span className="font-bold">{new Date().toLocaleDateString("ar-SA")}</span>
           </p>
@@ -1246,6 +1295,7 @@ export default function PortStudentAssistantApp() {
             >
               طباعة الشهادة
             </button>
+
             <button
               onClick={restartQuiz}
               className="rounded-2xl bg-slate-700 px-6 py-3 text-white transition hover:bg-slate-800"
@@ -1260,7 +1310,7 @@ export default function PortStudentAssistantApp() {
 
   if (finished) {
     return (
-      <div className="min-h-screen bg-slate-100 p-6">
+      <div dir="rtl" className="min-h-screen bg-slate-100 p-6">
         <div className="mx-auto max-w-3xl rounded-3xl bg-white p-8 shadow-xl">
           <h1 className="mb-6 text-3xl font-bold text-sky-800">النتيجة النهائية</h1>
 
@@ -1312,30 +1362,42 @@ export default function PortStudentAssistantApp() {
 
   if (started && current) {
     return (
-      <div className="min-h-screen bg-slate-100 p-6">
+      <div dir="rtl" className="min-h-screen bg-slate-100 p-6">
         <div className="mx-auto max-w-4xl rounded-3xl bg-white p-8 shadow-xl">
-          <div className="mb-6 flex flex-col gap-3 rounded-2xl bg-slate-50 p-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <span className="font-bold text-slate-700">الطالب: </span>
-              <span>{studentName}</span>
+          <div className="mb-6 rounded-2xl bg-slate-50 p-4">
+            <div className="mb-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div>
+                <span className="font-bold text-slate-700">الطالب: </span>
+                <span>{studentName}</span>
+              </div>
+              <div>
+                <span className="font-bold text-slate-700">السؤال: </span>
+                <span>
+                  {currentQuestion + 1} / {totalQuestions}
+                </span>
+              </div>
             </div>
-            <div>
-              <span className="font-bold text-slate-700">السؤال: </span>
-              <span>
-                {currentQuestion + 1} / {totalQuestions}
-              </span>
+
+            <div className="h-3 w-full overflow-hidden rounded-full bg-slate-200">
+              <div
+                className="h-full rounded-full bg-sky-700 transition-all duration-300"
+                style={{ width: `${progress}%` }}
+              />
             </div>
           </div>
 
-          <h1 className="mb-6 text-2xl font-bold leading-10 text-slate-900">{current.question}</h1>
+          <h1 className="mb-6 text-2xl font-bold leading-10 text-slate-900">
+            {current.question}
+          </h1>
 
           <div className="grid gap-3">
             {current.options.map((option, index) => {
               const active = selectedAnswer === index;
+
               return (
                 <button
                   key={index}
-                  onClick={() => setSelectedAnswer(index)}
+                  onClick={() => chooseAnswer(index)}
                   className={`rounded-2xl border px-4 py-4 text-right text-lg transition ${
                     active
                       ? "border-sky-700 bg-sky-100 text-sky-900"
@@ -1348,13 +1410,21 @@ export default function PortStudentAssistantApp() {
             })}
           </div>
 
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap gap-3">
+            <button
+              onClick={goToPreviousQuestion}
+              disabled={currentQuestion === 0}
+              className="rounded-2xl bg-slate-600 px-6 py-3 text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              السابق
+            </button>
+
             <button
               onClick={nextQuestion}
               disabled={selectedAnswer === null}
               className="rounded-2xl bg-sky-700 px-6 py-3 text-white transition hover:bg-sky-800 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              التالي
+              {currentQuestion === totalQuestions - 1 ? "إنهاء الاختبار" : "التالي"}
             </button>
           </div>
         </div>
@@ -1363,15 +1433,21 @@ export default function PortStudentAssistantApp() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 p-6">
+    <div dir="rtl" className="min-h-screen bg-slate-100 p-6">
       <div className="mx-auto max-w-4xl">
         <div className="mb-6 rounded-3xl bg-white p-8 shadow-xl">
           <h1 className="mb-2 text-3xl font-bold text-sky-800">منصة مسابقة الموانئ</h1>
+
           <p className="text-lg text-slate-600">
             بنك أسئلة من <span className="font-bold">{QUESTION_BANK.length}</span> سؤال
           </p>
+
           <p className="mt-1 text-sm text-slate-500">
-            يتم اختيار <span className="font-bold">{Math.min(QUIZ_LENGTH, QUESTION_BANK.length)}</span> سؤالًا عشوائيًا في كل محاولة
+            يتم اختيار{" "}
+            <span className="font-bold">
+              {Math.min(QUIZ_LENGTH, QUESTION_BANK.length)}
+            </span>{" "}
+            سؤالًا عشوائيًا في كل محاولة
           </p>
         </div>
 
