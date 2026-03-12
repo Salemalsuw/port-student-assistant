@@ -1,5 +1,4 @@
-export default function PortStudentAssistantApp() {
-  return (
+export default function App() {  return (
     <div dir="rtl" style={{ fontFamily: "sans-serif", padding: "40px", background: "#f8fafc", minHeight: "100vh" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>منصة مسابقة الموانئ</h1>
